@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-node-app
+  template:
+    metadata:
+      labels:
+        app: my-node-app
+    spec:
+      containers:
+        - name: my-node-app
+          image: akhil2715/buildtsapp:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: API_KEY
+              value: thisisprodKey
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-node-app
+spec:
+  ports:
+    - name: 3000-tcp
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: my-node-app
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: my-node-app
+spec:
+  to:
+    kind: Service
+    name: my-node-app
+    weight: 100
+  port:
+    targetPort: 3000-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
