@@ -23,7 +23,7 @@ app.set("view engine", "pug");
 const port = process.env.PORT || 3000;
 app.use(
   cors({
-    origin: ["localhost:4200, localhost:3000"],
+    origin: "*",
     credentials: true,
   })
 );
@@ -58,8 +58,8 @@ app.use(
     resave: false,
   })
 );
-app.use("/", index);
 app.use(express.static(path.join(__dirname, "angular-app")));
+app.use("/", index);
 
 app.listen(port, () => {
   console.log(`Server is Fire at ${port}, running on ${process.env.NODE_ENV} environment`);

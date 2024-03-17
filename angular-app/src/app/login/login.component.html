@@ -1,0 +1,114 @@
+<!-- login.component.html -->
+
+<div class="login-container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      @if (isLogin) {
+      <div class="card">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                formControlName="username"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+              />
+            </div>
+            <div
+              class="text-primary"
+              role="button"
+              (click)="isLogin = !isLogin"
+            >
+              <u>Sign up here?</u>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Login</button>
+          </form>
+        </div>
+      </div>
+      } @else {
+      <div class="card">
+        <div class="card-header">SignUp</div>
+        <div class="card-body">
+          <form [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUp()">
+            <div class="mb-3">
+              <span class="text-light">Email</span>
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                formControlName="email"
+              />
+            </div>
+            <div class="mb-3">
+              <span class="text-light">Firstname</span>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                formControlName="firstName"
+              />
+            </div>
+            <div class="mb-3">
+              <span class="text-light">Lastname</span>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                formControlName="lastName"
+              />
+            </div>
+            <div class="mb-3">
+              <span class="text-light">Password</span>
+              <input
+                type="password"
+                class="form-control"
+                autocomplete="off"
+                id="password"
+                formControlName="password"
+              />
+              <span
+                class="text-danger"
+                *ngIf="!isValid('signUpForm', 'password')"
+                >Password</span
+              >
+            </div>
+            <div class="mb-3">
+              <span class="text-light">Confirm Password</span>
+              <input
+                type="password"
+                autocomplete="off"
+                class="form-control"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+              />
+              <span
+                class="text-danger"
+                *ngIf="!isValid('signUpForm', 'confirmPassword')"
+                >confirm password is invalid</span
+              >
+            </div>
+            <div
+              class="text-primary undeline"
+              role="button"
+              (click)="isLogin = !isLogin"
+            >
+              <u>Already have an account?</u>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">SignUp</button>
+          </form>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

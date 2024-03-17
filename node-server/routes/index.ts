@@ -4,9 +4,9 @@ const listing = require("./listing");
 const home = require("./home");
 const register = require("./register");
 
-router.get("/", function (req: any, res: any, next: any) {
-  return res.status(200).json({ status: 200, message: `app server is running on port ${process.env.PORT}` });
-});
+// router.get("/", function (req: any, res: any, next: any) {
+//   return res.status(200).json({ status: 200, message: `app server is running on port ${process.env.PORT}` });
+// });
 
 router.get(
   "/login",

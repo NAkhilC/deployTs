@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row mt-2" *ngIf="listingInfo">
+    <div class="col-md-7 p-0">
+      <div class="image-container">
+        <img [src]="nextImgValue" alt="Your Image" />
+        <button class="arrow-button left-arrow" (click)="nextImg()">
+          &lt;
+        </button>
+        <button class="arrow-button right-arrow" (click)="nextImg()">
+          &gt;
+        </button>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col col-lg-8 border">
+          <div class="row bg-dark">
+            <div class="col text-light p-2">Primary Information</div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-icon class="pt-1">attach_money</mat-icon>
+              <span class="ml-1">{{ listingInfo.price }}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-icon class="pt-1">beds</mat-icon>
+              <span class="ml-1"> {{ listingInfo.building.bedrooms }}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-icon class="pt-1">shower</mat-icon>
+              <span class="ml-1"> {{ listingInfo.building.bathrooms }}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-icon class="pt-1">location_on</mat-icon>
+              <span class="ml-1"> {{ listingInfo.location }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-lg-12 mt-2 border">
+          <div class="row bg-dark">
+            <div class="col text-light p-2">Listing Description</div>
+          </div>
+          <div class="row p-1">
+            {{ listingInfo.Info }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-lg-12 mt-2 border">
+          <div class="row bg-dark">
+            <div class="col text-light p-2">Interior Information</div>
+          </div>
+          <div class="row">
+            <div class="col col-lg-4">
+              <div class="row border-bottom">
+                <div class="col fw-bold p-2">Appliances Included</div>
+              </div>
+              <div
+                class="row"
+                *ngFor="
+                  let interiorItems of listingInfo?.InteriorFeatures
+                    .appliancesIncluded
+                "
+              >
+                <div class="col-6 col-md-4">{{ interiorItems }}</div>
+              </div>
+            </div>
+            <div class="col col-lg-4">
+              <div class="row border-bottom">
+                <div class="col fw-bold p-2">Basement</div>
+              </div>
+              <div class="row">
+                <div class="col-6 col-md-4">
+                  {{ listingInfo.InteriorFeatures.basementType }}
+                </div>
+              </div>
+            </div>
+            <div class="col col-lg-4">
+              <div class="row border-bottom">
+                <div class="col fw-bold p-2">Flooring</div>
+              </div>
+              <div class="row">
+                <div class="col-6 col-md-4">
+                  {{ listingInfo.InteriorFeatures.flooring }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-/angular-app/node_modules
-/node_modules
-/.env
-/dist
+angular-app/node_modules
+node-server/node_modules
+node-server/.env
+node-server/dist
